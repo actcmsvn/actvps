@@ -1,0 +1,58 @@
+<?php
+$tool = (isset($_GET['tool'])) ? $_GET['tool'] : '';
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title>ActVPS Script Admin</title>
+
+	<link type="text/css" href="actvps/css/screen.css" rel="stylesheet" media="all" />
+	<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="header">
+	<ul>
+		<?php if($firewall->hasUserAccess()) : ?>
+		<li><a href="." class="btn3">TRANG CHỦ</a></li>
+		<?php endif; ?>
+		<li class="current"><a href="?action=changePassword" class="btn">ĐỔI MẬT KHẨU</a></li>
+	</ul>
+</div>
+
+<h1>ActVPS Script Admin</h1>
+
+<?php if (isset($_GET['success'])) : ?>
+<div class="flash">
+	<?php if (empty($_GET['message'])) : ?>
+	<div class="success">Mật khẩu đã được đổi.</div>
+	<?php else : ?>
+	<div class="error"><?php echo $_GET['message'] ?></div>
+	<?php endif; ?>
+</div>
+<?php endif; ?>
+
+<div id="main_content">
+	<p>Đổi mật khẩu tài khoản <strong>admin</strong>.</p>
+	<form action="<?php echo $_SERVER["SCRIPT_NAME"] ?>?action=updatePassword" method="post">
+		<fieldset>
+			<label for="tool">Chọn công cụ:</label>
+			<select name="tool" id="tool" class="form-control">
+			  <option></option>
+			  <option value="admin" <?php if ($tool == 'admin') echo 'selected'; ?>>ActVPS Script Admin</option>
+			  <option value="filemanager" <?php if ($tool == 'filemanager') echo 'selected'; ?>>File Manager</option>
+			  <option value="phpmyadmin" <?php if ($tool == 'phpmyadmin') echo 'selected'; ?>>phpMyAdmin</option>
+			</select>
+		</fieldset>
+		<fieldset>
+			<label for="password">Mật khẩu mới:</label>
+			<input type="password" name="password" id="password" size="30" />
+		</fieldset>
+		<fieldset>
+			<label></label>
+			<input class="btn" type="submit" value="Thực  hiện" />
+		</fieldset>
+	</form>
+</div>
+</body>
+</html>

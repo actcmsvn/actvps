@@ -1,0 +1,41 @@
+#!/bin/sh
+
+. /etc/actvps/scripts.conf
+
+clear
+prompt="Nhap vao lua chon menu cua ban:"
+options=("Liet Ke Domain" "Them Domain" "Xoa Domain" "Sao Luu Code" "Sao Luu Data" "Tu Dong Sao Luu" "Tat Tu Dong Sao Luu" "Tao Database" "Xoa Database" "Doi Pass VPS" "Doi Port Admin" "Them Park Domain" "Them Redirect Domain" "Phan Quyen Webserver" "Nang Cap Server") # End Options
+
+printf "=========================================================================\n"
+printf "               ActVPS Script v$actvps_version - https://actcms.work/script/ \n"
+printf "=========================================================================\n"
+printf "                             ActVPS Menu\n"
+printf "=========================================================================\n"
+PS3="
+$prompt"
+select opt in "${options[@]}" "Thoat"; do 
+
+    case "$REPLY" in
+	    1 ) /etc/actvps/menu/liet-ke-domain;;
+	    2 ) /etc/actvps/menu/them-domain;;
+	    3 ) /etc/actvps/menu/xoa-domain;;
+	    4 ) /etc/actvps/menu/sao-luu-code;;
+	    5 ) /etc/actvps/menu/sao-luu-data;;
+	    6 ) /etc/actvps/menu/tu-dong-sao-luu;;
+	    7 ) /etc/actvps/menu/tat-tu-dong-sao-luu;;
+	    8 ) /etc/actvps/menu/tao-database;;
+	    9 ) /etc/actvps/menu/xoa-database;;
+	    10 ) /etc/actvps/menu/doi-pass-vps;;
+	    11 ) /etc/actvps/menu/doi-port-admin;;
+	    12 ) /etc/actvps/menu/park-domain;;
+	    13 ) /etc/actvps/menu/forward-domain;;
+	    14 ) /etc/actvps/menu/phan-quyen-webserver;;
+	    15 ) /etc/actvps/menu/nang-cap-server;;
+	    # End Menu
+
+	    $(( ${#options[@]}+1 )) ) printf "\nChao tam biet!\nHen gap lai ban o https://actcms.work/\n\n"; break;;
+	    *) echo "Ban nhap sai, vui long nhap theo so thu tu tren danh sach";continue;;
+
+    esac
+
+done

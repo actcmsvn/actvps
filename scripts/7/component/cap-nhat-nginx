@@ -1,0 +1,7 @@
+#!/bin/bash
+
+. /etc/actvps/scripts.conf
+
+printf "Dang cap nhat Nginx...\n\n"
+yum -y upgrade nginx
+exit

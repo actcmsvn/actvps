@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title>ActVPS Script Admin</title>
+
+	<link type="text/css" href="actvps/css/screen.css" rel="stylesheet" media="all" />
+	<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="header">
+	<ul>
+		<?php if($firewall->hasUserAccess()) : ?>
+		<li class="current"><a href="." class="btn">TRANG CHỦ</a></li>
+		<?php endif; ?>
+		<li><a href="?action=changePassword" class="btn3">ĐỔI MẬT KHẨU</a></li>
+	</ul>
+</div>
+
+<h1>ActVPS Script Admin</h1>
+
+<div id="main_content">
+	<h2>Chào, <?php echo $userManager->getCurrentUser()->getUsername() ?></h2>
+	
+	<p>Cám ơn bạn đã sử dụng ActVPS Script!</p>
+	
+	<h3>Đây là các công cụ quản lý VPS của bạn:</h3>
+	
+	<ul>
+		<li>ActVPS Script Admin: <a href="<?php echo $admin_url; ?>/" target="_blank"><?php echo $admin_url; ?>/</a></li>
+		<li>File Manager: <a href="<?php echo $admin_url; ?>/filemanager/" target="_blank"><?php echo $admin_url; ?>/filemanager/</a></li>
+		<li>phpMyAdmin: <a href="<?php echo $admin_url; ?>/phpmyadmin/" target="_blank"><?php echo $admin_url; ?>/phpmyadmin/</a></li>
+		<li>Thông tin máy chủ: <a href="<?php echo $admin_url; ?>/serverinfo/" target="_blank"><?php echo $admin_url; ?>/serverinfo/</a></li>
+		<li>PHP OPcache Management: <a href="<?php echo $admin_url; ?>/op.php" target="_blank"><?php echo $admin_url; ?>/op.php</a></li>
+	</ul>
+	
+	<p>Tài khoản mặt định là <strong>admin</strong> cho tất cả các công cụ, mật khẩu được tạo tự động và lưu trữ trong tệp <code>/root/actvps-script.txt</code></p>
+	
+	<p>Bạn có thể đổi mật khẩu mặt định <a href="?action=changePassword">tại đây</a>.</p>
+	
+	<p>Hãy cho tôi biết nếu bạn cần bất cứ thứ gì: <a href="https://hosting.actcms.work/category/script/" target="_blank">https://hosting.actcms.work/category/script/</a></p>
+</div>
+</body>
+</html>
