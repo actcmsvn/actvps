@@ -1,0 +1,8 @@
+{
+    "name": "actcmsvn/actvps",
+    "description": "ActVPS Script Installer",
+    "require": {
+        "php": ">=7.4",
+        "another-vendor/package": "1.*"
+    }
+}

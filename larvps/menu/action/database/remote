@@ -1,0 +1,73 @@
+#!/bin/bash
+. /etc/larvps/.larvps.conf
+. /etc/larvps/menu/functions
+echo "-------------------------------------------------------------------------"
+echo "Remote Database"
+echo "-------------------------------------------------------------------------"
+echo
+
+#Mở kết nối
+
+if [[ `grep "#bind-address" /etc/my.cnf >> /dev/null 2>&1 && echo 1` ]]; then
+
+	read -p "Tinh nang Remote Database dang mo. Ban co muon tat? (y/n): " confirm_off
+
+	if [[ "$confirm_off" = "y" ]]; then
+		sed -i "s/#bind-address/bind-address/" /etc/my.cnf
+		systemctl restart mysql.service
+		sleep 2
+		echo "Da khoi dong lai MYSQL"
+		echo "Da tat ket noi"
+	fi
+
+else
+	read -p "Mo tinh nang Remote Database? (y/n): " confirm_on
+
+	if [[ "$confirm_on" = "y" ]]; then
+		sed -i "s/bind-address/#bind-address/" /etc/my.cnf
+		systemctl restart mysql.service
+		sleep 2
+		echo "Da khoi dong lai MYSQL"
+		echo "Da mo ket noi"
+	fi
+
+fi
+
+
+if [[ `grep "#bind-address" /etc/my.cnf >> /dev/null 2>&1 && echo 1` ]]; then
+
+	#Tạo user kết nối
+	read -p "Ban co muon thiep lap Database ket noi? (y/n):" confirm
+	 
+	if [[ "$confirm" = "y" ]]; then
+
+		mysql -u admin -p"$db_admin_password" -e "show databases where \`database\` not in('information_schema', 'test', 'sys', 'phpmyadmin', 'mysql', 'performance_schema')"
+
+		echo 
+
+		read -p "1. Nhap DB_Name muon ket noi: " database
+		read -p "2. Nhap DB_User: " username
+		read -p "3. Nhap DB_Password: " password
+		read -p "Xac nhan? (y/n): " confirm
+
+		if [ "$database" = "" ] || [ "$username" = "" ] || [ "$password" = "" ]; then
+		    clear
+		    action_database
+		fi
+
+		mysql -u admin -p"$db_admin_password" -e "CREATE USER IF NOT EXISTS '$username'@'%' IDENTIFIED BY '$password'"
+		mysql -u admin -p"$db_admin_password" -e "GRANT ALL PRIVILEGES ON $database.* TO '$username'@'%' WITH GRANT OPTION"
+		mysql -u admin -p"$db_admin_password" -e "FLUSH PRIVILEGES"
+		
+		echo "Thong tin"
+		echo "-------------------------------------------------------------------------"
+		echo "1.  DB_Database           : $domain"
+		echo "2.  DB_Name               : $db_name"
+		echo "3.  DB_User               : $db_user"
+		echo "4.  IP               		: $ip"
+		echo "5.  Port					: 3306"
+		echo "-------------------------------------------------------------------------"
+	fi
+
+fi
+action_database
