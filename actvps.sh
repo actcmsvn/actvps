@@ -2,7 +2,7 @@
 #
 #
 # @author: ACTCMS
-# @website: https://actcms.work
+# @website: http://actcms.work:1982
 # @since: 2021
 
 if [ "$EUID" -ne 0 ]; then

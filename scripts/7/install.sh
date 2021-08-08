@@ -2,16 +2,16 @@
 #######################################################
 # ActVPS Script v1.0 for CentOS 7
 # To install type: 
-# curl -sO https://actcms.work/install && bash install
+# curl -sO http://actcms.work:1982/install && bash install
 # or
-# curl -sO https://actcms.work/scripts/$(rpm -E %centos)/install && bash install
+# curl -sO http://actcms.work:1982/scripts/$(rpm -E %centos)/install && bash install
 #######################################################
 actvps_version="1.0"
 phpmyadmin_version="4.9.5" # Released 2020-03-21. Older version compatible with PHP 5.5 to 7.4 and MySQL 5.5 and newer. Currently supported for security fixes only.
 extplorer_version="2.1.13" # 05/15/2019 04:43 PM
 extplorer_id="82"
-script_root="https://actcms.work/scripts"
-script_url="https://actcms.work/scripts/7"
+script_root="http://actcms.work:1982/scripts"
+script_url="http://actcms.work:1982/scripts/7"
 low_ram='262144' # 256MB
 
 yum -y install gawk bc wget lsof
@@ -882,7 +882,7 @@ Thong tin dang nhap mac dinh cho tat ca tool:
 Username: admin
 Password: $admin_password
 
-Neu can ho tro, cac ban hay truy cap https://actcms.work/script/
+Neu can ho tro, cac ban hay truy cap http://actcms.work:1982/script/
 END
 
 chmod 600 /root/actvps-script.txt
@@ -918,7 +918,7 @@ printf "========================================================================
 printf "***Luu y: Port dang nhap SSH da duoc doi tu 22 sang 2222 de bao mat VPS\n"
 printf "=========================================================================\n"
 printf "De quan ly server, ban hay dung lenh \"actvps\" khi ket noi SSH.\n"
-printf "Neu can ho tro, cac ban hay truy cap https://actcms.work/script/\n"
+printf "Neu can ho tro, cac ban hay truy cap http://actcms.work:1982/script/\n"
 printf "=========================================================================\n"
 printf "Server se tu dong khoi dong lai sau 3s nua.... \n\n"
 sleep 3
