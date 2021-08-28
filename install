@@ -2,7 +2,7 @@
 #######################################################
 # ActVPS Script Installer v1.0
 # To install ActVPS Script type: 
-# curl -sO http://actcms.work:1982/install && bash install
+# curl -sO https://actcms.work/install && bash install
 #######################################################
 
 if [ $(id -u) != "0" ]; then
@@ -66,7 +66,7 @@ cd /root/
 rm -f install*
 
 if [ "$1" = "wordpress" ]; then
-	curl -sO http://actcms.work:1982/scripts/$centos_version/install.sh && bash install.sh wordpress
+	curl -sO https://actcms.work/scripts/$centos_version/install.sh && bash install.sh wordpress
 else
-	curl -sO http://actcms.work:1982/scripts/$centos_version/install.sh && bash install.sh
+	curl -sO https://actcms.work/scripts/$centos_version/install.sh && bash install.sh
 fi

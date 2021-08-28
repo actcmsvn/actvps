@@ -7,7 +7,7 @@ prompt="Nhap vao lua chon menu cua ban:"
 options=("Liet Ke Domain" "Them Domain" "Xoa Domain" "Sao Luu Code" "Sao Luu Data" "Tu Dong Sao Luu" "Tat Tu Dong Sao Luu" "Tao Database" "Xoa Database" "Doi Pass VPS" "Doi Port Admin" "Them Park Domain" "Them Redirect Domain" "Phan Quyen Webserver" "Nang Cap Server") # End Options
 
 printf "=========================================================================\n"
-printf "               ActVPS Script v$actvps_version - http://actcms.work:1982/script/ \n"
+printf "               ActVPS Script v$actvps_version - https://actcms.work/script/ \n"
 printf "=========================================================================\n"
 printf "                             ActVPS Menu\n"
 printf "=========================================================================\n"
@@ -33,7 +33,7 @@ select opt in "${options[@]}" "Thoat"; do
 	    15 ) /etc/actvps/menu/nang-cap-server;;
 	    # End Menu
 
-	    $(( ${#options[@]}+1 )) ) printf "\nChao tam biet!\nHen gap lai ban o http://actcms.work:1982/\n\n"; break;;
+	    $(( ${#options[@]}+1 )) ) printf "\nChao tam biet!\nHen gap lai ban o https://actcms.work/\n\n"; break;;
 	    *) echo "Ban nhap sai, vui long nhap theo so thu tu tren danh sach";continue;;
 
     esac
